@@ -35,77 +35,31 @@ public class SceneChange_normal : MonoBehaviour,IGvrPointerHoverHandler,IPointer
     }
 
     public void hit()
-    {
-        // Normal 단계에서 몇 개의 스테이지를 플레이했는지 저장하는 파일
-
-        // 빌드할 때 주석 해제
-        /*Data_Normal data30 = new Data_Normal();
-        data30.m_nLevel = 0;
-        File.WriteAllText(Application.dataPath + "/TestNormal03.json", JsonUtility.ToJson(data30));
-        Debug.Log("data30.m_nLevel: " + data30.m_nLevel);*/
-
-        // 어디까지 진행했는지 읽어오기
-        /*string str31 = File.ReadAllText(Application.dataPath + "/TestNormal03.json");
-        Data_Normal data31 = JsonUtility.FromJson<Data_Normal>(str31);
-        count03 = data31.m_nLevel;*/
-
-        
+    {   
         if (count03 == 0)
         {
             random = Random.Range(1, 5);
             Debug.Log("random01: " + random);
             save(random); // 처음 플레이
             count03++;
-            /*Data_Normal data3 = new Data_Normal();
-            data3.m_nLevel = random;
-            File.WriteAllText(Application.dataPath + "/TestNormal.json", JsonUtility.ToJson(data3));*/
-
-            //Data_Normal data32 = new Data_Normal();
-            //빌드할 때 주석 해제
-            //data32.m_nLevel = 0;
-            // 빌드할 때 주석
-            //data32.m_nLevel = 1;
-            //File.WriteAllText(Application.dataPath + "/TestNormal03.json", JsonUtility.ToJson(data32));
-            //Debug.Log("data32.m_nLevel: " + data32.m_nLevel);
         }
 
         else if(count03 == 1)
         {
-            // 저번에 플레이한 씬 뭔지
-            /*string str2 = File.ReadAllText(Application.dataPath + "/TestNormal.json");
-            Data_Normal data4 = JsonUtility.FromJson<Data_Normal>(str2);
-            count01 = data4.m_nLevel;*/
-
+            
             count01 = load(); // 처음 플레이한 스테이지 번호
             random = Random.Range(1, 5);
             while (count01 == random)
             {
                 random = Random.Range(1, 5); // 다른 숫자 나옴
             }
-            //Debug.Log("random02: " + random);
-            // 두 번째 플레이하는 씬 저장
-            /*Data_Normal data1 = new Data_Normal();
-            data1.m_nLevel = random;
-            File.WriteAllText(Application.dataPath + "/TestNormal02.json", JsonUtility.ToJson(data1));*/
+        
             save02(random);
-
-            // 두 번재 플레이한다는 것 저장
-            /*Data_Normal data33 = new Data_Normal();
-            data33.m_nLevel = 2;
-            File.WriteAllText(Application.dataPath + "/TestNormal03.json", JsonUtility.ToJson(data33));*/
-            //Debug.Log("data33.m_nLevel: " + data33.m_nLevel);
             count03++;
         }
 
         else if(count03 == 2)
         {
-            /*string str4 = File.ReadAllText(Application.dataPath + "/TestNormal.json");
-            Data_Normal data5 = JsonUtility.FromJson<Data_Normal>(str4);
-            count01 = data5.m_nLevel;
-
-            string str3 = File.ReadAllText(Application.dataPath + "/TestNormal02.json");
-            Data_Normal data2 = JsonUtility.FromJson<Data_Normal>(str3);
-            count02 = data2.m_nLevel;*/
             count01 = load();
             count02 = load02();
             random = Random.Range(1, 5); // 세번째
@@ -113,12 +67,6 @@ public class SceneChange_normal : MonoBehaviour,IGvrPointerHoverHandler,IPointer
             {
                 random = Random.Range(1, 5);
             }
-            //Debug.Log("random03" + random);
-
-            /*Data_Normal data34 = new Data_Normal();
-            data34.m_nLevel = 3;
-            File.WriteAllText(Application.dataPath + "/TestNormal03.json", JsonUtility.ToJson(data34));
-            Debug.Log("data34.m_nLevel: " + data34.m_nLevel);*/
         }
 
         else
